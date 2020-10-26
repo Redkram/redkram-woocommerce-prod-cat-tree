@@ -5,8 +5,8 @@
 	 * Plugin URI: https://www.office24.net
 	 * Description: Product Category Tree for Woocommerce
 	 * Author: Redkram
-	 * Author URI: https://www.office24.net
-	 * Version: 1.0.0
+	 * Author URI: https://github.com/Redkram/
+	 * Version: 0.0.1
 	 * Text Domain: ProdCatTree
 	 * License: GPLv2 or later
 	 */
