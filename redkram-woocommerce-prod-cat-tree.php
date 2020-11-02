@@ -55,8 +55,19 @@
 
 		public function deleteMenu ($msg)
 		{
-			$menu = wp_get_nav_menu_object( $this->name );
-			if( $menu ) wp_delete_nav_menu( $menu->term_id );
+			global $wpdb;
+			$wpdb->query("DELETE wt,wtt,wtr,wp,wpm
+			FROM
+			wp_terms wt
+			LEFT JOIN 
+			wp_term_taxonomy wtt ON wtt.term_id = wt.term_id
+			LEFT JOIN 
+			wp_term_relationships wtr ON wtr.term_taxonomy_id = wtt.term_taxonomy_id
+			LEFT JOIN 
+			wp_posts wp ON wp.ID = wtr.object_id
+			LEFT JOIN 
+			wp_postmeta wpm ON wpm.post_id = wp.ID
+			WHERE wt.slug = 'prodcattree'");
 			flush_rewrite_rules();
 			echo $msg;
 		}
